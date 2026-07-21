@@ -8,10 +8,7 @@ from store.models import Product
 
 
 def say_hello(request):
-    # query_set = Product.objects.filter(Q(unit_price__lt = 20) | ~Q(inventory__lt=10))
-    # query_set = Product.objects.filter(inventory=F('unit_price'))
-    # query_set = Product.objects.order_by('unit_price', '-title')
-    query_set = Product.objects.order_by('unit_price', '-title').reverse()
+    query_set = Product.objects.all()[5:10]
     
     
     
