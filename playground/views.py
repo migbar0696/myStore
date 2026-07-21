@@ -8,7 +8,8 @@ from store.models import Product
 
 
 def say_hello(request):
-    query_set = Product.objects.all()[5:10]
+    # query_set = Product.objects.values('id', 'title', 'collection__title')
+    query_set = Product.objects.values_list('id', 'title', 'collection__title')
     
     
     
