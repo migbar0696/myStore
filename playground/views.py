@@ -7,9 +7,7 @@ from store.models import Product
 
 
 def say_hello(request):
-    query_set = Product.objects.all()
+    query_set = Product.objects.filter(last_update__year = 2021)
     
-    for product in query_set:
-        print(product)
 
-    return render(request,'hello.html')
+    return render(request,'hello.html',{'name':'Migbaru', 'products':list(query_set)})

@@ -1,7 +1,16 @@
 <html>
 <body>
-
+    {%if name%}
+    <h1>Selam  {{name}}</h1>
+    {%else%}
     <h1>Selam  World</h1>
+    {%endif%}
+
+    {%for product in products%}
+    <ul>
+        <li>{{product.title}},     price : {{product.unit_price}}</li>
+    </ul> 
+    {%endfor%}
     
 </body>
 </html>
