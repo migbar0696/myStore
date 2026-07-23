@@ -16,12 +16,9 @@ def say_hello(request):
     # result = Customer.objects.annotate(new_id=F('id') + 1)
     
     query_set = Customer.objects.annotate(
-        full_name = Func(F('first_name'), value(' '), F('last_name'), function='CONCAT')
+        orders_count = Count('order')
     )
     
-    query_set = Customer.objects.annotate(
-        full_name = Concat('first_name', value(' '), 'lastname')
-    )
 
     
     
