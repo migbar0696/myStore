@@ -8,7 +8,7 @@ from store.models import Product, OrderItem
 
 
 def say_hello(request):
-    query_set = Product.objects.filter(id__in =OrderItem.objects.values('product__id').distinct() ).order_by('title')
+    query_set = Product.objects.select_related('collection').prefetch_related('promotions').all()
 
     
     
