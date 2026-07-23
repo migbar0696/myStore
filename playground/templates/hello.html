@@ -6,9 +6,9 @@
     <h1>Selam  World</h1>
     {%endif%}
 
-    {%for product in products%}
+    {%for order in orders%}
     <ul>
-        <li>{{product.title}} - {{product.collection.title}}</li>
+        <li>{{order.id}} - {{order.customer.first_name}}</li>
     </ul> 
     {%endfor%}
     
