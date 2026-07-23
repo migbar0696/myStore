@@ -4,13 +4,7 @@
     <h1>Selam  {{name}}</h1>
     {%else%}
     <h1>Selam  World</h1>
-    {%endif%}
-
-    {%for order in orders%}
-    <ul>
-        <li>{{order.id}} - {{order.customer.first_name}}</li>
-    </ul> 
-    {%endfor%}
+    {%endif%}{{result}}
     
 </body>
 </html>
