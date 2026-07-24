@@ -20,7 +20,7 @@ def say_hello(request):
         item.product_id = 1
         item.quantity = 1
         item.unitprice = 10
-        item.save
+        item.save()
     
     
     
