@@ -9,18 +9,11 @@ from tags.models import TaggedItem
 
 
 def say_hello(request):
-    # collection = Collection(pk=11)
-    # collection.title = 'Games'
-    # collection.featured_product = None
-    # collection.save()
+    # collection = Collection(pk=1)
+    # collection.delete()
     
-    # collection = Collection.objects.get(pk=11)
-    # collection.featured_product = None
-    # collection.save()
+    # OR
     
-    
-    
-    collection = Collection.objects.filter(pk=11).update(title='Games', featured_product_id = None)
-     
+    Collection.objects.filter(id__gt=5).delete() # to delete multiple object
     
     return render(request,'hello.html',{'name':'Migbaru'})
