@@ -1,18 +1,21 @@
 from django.shortcuts import render
-from django.db.models.aggregates import Count, Min, Max, Avg, Sum
-from django.db.models import Q , F, Func, ExpressionWrapper, DecimalField, Value
-from django.db.models.functions import Concat
+from django.contrib.contenttypes.models import ContentType
 from django.http import HttpResponse
-from store.models import Product, OrderItem, Order, Customer
+from store.models import Product
+from tags.models import TaggedItem
 
 # def say_hello(request):
 #     return HttpResponse('Hello World')
 
 
 def say_hello(request):
-    discount_price = ExpressionWrapper(F('unit_price') * 0.8, output_field=DecimalField())
-    query_set = Product.objects.annotate(
-        discount_price = discount_price
+    content_type = ContentType.objects.get_for_model(Product)
+    
+    query_set = TaggedItem.objects\
+        .select_related('tag')\
+        .filter(
+            content_type=content_type,
+            object_id = 1
     )
      
     
