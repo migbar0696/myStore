@@ -1,19 +1,28 @@
 from django.shortcuts import render
-from django.contrib.contenttypes.models import ContentType
 from django.http import HttpResponse
-from store.models import Product, Collection
-from tags.models import TaggedItem
+from store.models import Product, Collection, Order, OrderItem, Customer
+from django.db import transaction
+
 
 # def say_hello(request):
 #     return HttpResponse('Hello World')
 
 
+# @transaction.atomic()     # This wrap the entire say hello function
 def say_hello(request):
-    # collection = Collection(pk=1)
-    # collection.delete()
+    with transaction.atomic():
+        order = Order()
+        order.customer_id = 1
+        order.save()
+        
+        item = OrderItem()
+        item.order = order
+        item.product_id = 1
+        item.quantity = 1
+        item.unitprice = 10
+        item.save
     
-    # OR
     
-    Collection.objects.filter(id__gt=5).delete() # to delete multiple object
+    
     
     return render(request,'hello.html',{'name':'Migbaru'})
