@@ -27,7 +27,11 @@ class Product(models.Model):
     promotions = models.ManyToManyField(Promotion)
     # promotions = models.ManyToManyField(Promotion, related_name=product)       # if we wanna make the name of the product column product in the other class instead of product_set 
     
+    def __str__(self):
+        return self.title
     
+    class Meta:
+        ordering = ['title']
     
 class Customer(models.Model):
     MEMBERSHIP_BRONZE = "B"
