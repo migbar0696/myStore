@@ -54,6 +54,7 @@ class Customer(models.Model):
         indexes = [
             models.Index(fields=['last_name', 'first_name'])
         ]
+        
 class Address(models.Model):
     street = models.CharField(max_length=255)
     city = models.CharField(max_length=255)
