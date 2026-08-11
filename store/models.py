@@ -68,7 +68,7 @@ class Address(models.Model):
     zip = models.CharField(max_length=255)
     # customer = models.OneToOneField(Customer, on_delete=models.CASCADE, primary_key=True)  # for one to one relationship
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE) 
-    
+
 class Order(models.Model):
     PAYMENT_STATUS_PENDING = "P"
     PAYMENT_STATUS_COMPLETE = "C"
