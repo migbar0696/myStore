@@ -18,7 +18,7 @@ class Tag(models.Model):
     label = models.CharField(max_length=255)
 
 class TaggedItem(models.Model):
-    objects = TaggedItemManager()
+    objects = TaggedItemManager()        # Custom Manager instead of default
     tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     object_id = models.PositiveIntegerField()
