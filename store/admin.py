@@ -1,10 +1,10 @@
 from django.contrib import admin, messages
-from django.contrib.contenttypes.admin import GenericTabularInline, GenericStackedInline
 from django.db.models import Count
 from django.utils.html import format_html, urlencode
 from django.urls import reverse
-from tags.models import TaggedItem
 from . import models
+#from tags.models import TaggedItem
+#from django.contrib.contenttypes.admin import GenericTabularInline, GenericStackedInline
 
 # Register your models here.
 
@@ -24,15 +24,10 @@ class InventoryFilter(admin.SimpleListFilter):
         elif self.value() == 'high':
             return queryset.filter(inventory__gte = 10)
 
-class TagInline(GenericTabularInline):
-    autocomplete_fields = ['tag']
-    model = TaggedItem
-    extra = 1
 @admin.register(models.Product)
 class ProductAdmin(admin.ModelAdmin):
     autocomplete_fields = ['collection']
     actions = ['clear_inventory']
-    inlines = [TagInline]
     search_fields = ['title']
     prepopulated_fields = {
         'slug':['title']
